@@ -1,9 +1,9 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <vector>
 
-int main() 
-{ 
+int main() { 
     std::ifstream file("input_1.txt");
     std::string str; 
     std::vector<std::string> v{};
