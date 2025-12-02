@@ -11,21 +11,15 @@ int main() {
     string s;
     vector<long int> start, finish;
     getline(file, s);
-    //cout << s << '\n';
-    //cout << s.length();
 
     int left_pointer{0}, right_pointer{0};
     while (right_pointer < s.length()) {
-        //if (left_pointer == right_pointer) {
-        //   continue;
-        //}
         string substring{};
         long int tmp;
         if (s[right_pointer] == '-') {
             substring = s.substr(left_pointer, right_pointer-left_pointer);
             tmp = stol(substring);
             start.push_back(tmp);
-            // cout << "start " << tmp << '\n';
             left_pointer = right_pointer + 1;
         } else if (s[right_pointer] == ',') {
             substring = s.substr(left_pointer, right_pointer-left_pointer);
@@ -52,7 +46,6 @@ int main() {
     */
     
     long total{0};
-    set<long int> check{};
     for (int i{0}; i < start.size(); i++) {
         for (long j{start[i]}; j <= finish[i]; j++) {
             if (j < 10) {
@@ -63,7 +56,6 @@ int main() {
             string second_half = num_as_string.substr(num_as_string.length() / 2);
             if (first_half == second_half) {
                 total += j;
-                check.insert(j);
             }
         }
     }
@@ -87,12 +79,8 @@ int main() {
                         unique.insert(num_as_string.substr(num_as_string.length() / k * l, num_as_string.length() / k));
                     }
                     if (unique.size() == 1 && unique_str.find(num_as_string) == unique_str.end()) {
-                        // cout << j << '\n';
                         unique_str.insert(num_as_string);
                         new_total += j;
-                        if (check.find(j) == check.end()) {
-                            //cout << j << '\n';
-                        }
                     }
                 }
             }
